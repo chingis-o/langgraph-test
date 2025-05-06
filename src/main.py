@@ -1,6 +1,5 @@
 import getpass
 import os
-_set_env("ANTHROPIC_API_KEY")
 
 from typing import Annotated
 
@@ -14,6 +13,7 @@ def _set_env(var: str):
     if not os.environ.get(var):
         os.environ[var] = getpass.getpass(f"{var}: ")
 
+
 class State(TypedDict):
     # Messages have the type "list". The `add_messages` function
     # in the annotation defines how this state key should be updated
@@ -22,3 +22,5 @@ class State(TypedDict):
 
 
 graph_builder = StateGraph(State)
+
+_set_env("ANTHROPIC_API_KEY")
